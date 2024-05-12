@@ -1,5 +1,5 @@
 // Export the drawFlower function for canvas drawing
-export function drawFlower(svg, type, colorPalette) {
+export function drawFlower(svg, type, colorPalette, randInt) {
     const { petal_colors, stem_colors, bg_colors } = colorPalette;
     const svgWidth = svg.getAttribute('width');
     const svgHeight = svg.getAttribute('height');
@@ -10,17 +10,17 @@ export function drawFlower(svg, type, colorPalette) {
     // ... existing code for drawing stem ...
 
     // Choose a stem color for the petal outline
-    const petalOutlineColor = stem_colors[Math.floor(Math.random() * stem_colors.length)];
+    const petalOutlineColor = stem_colors[randInt(stem_colors.length)];
 
     console.log('Drawing flower with type:', type);
     console.log('SVG size:', svgWidth, 'x', svgHeight);
 
     // Draw background
-    const splitPosition = svgHeight * (0.4 + Math.random() * 0.2);
-    let bgTopColor = bg_colors[Math.floor(Math.random() * bg_colors.length)];
+    const splitPosition = svgHeight * (0.4 + randInt(2) * 0.1);
+    let bgTopColor = bg_colors[randInt(bg_colors.length)];
     let bgBottomColor;
     do {
-        bgBottomColor = bg_colors[Math.floor(Math.random() * bg_colors.length)];
+        bgBottomColor = bg_colors[randInt(bg_colors.length)];
     } while (bgBottomColor === bgTopColor);
     console.log('Background top color:', bgTopColor);
     console.log('Background bottom color:', bgBottomColor);
@@ -44,7 +44,7 @@ export function drawFlower(svg, type, colorPalette) {
     const stemX = svgWidth / 2;
     const stemTopY = svgHeight * 0.25;
     const stemBottomY = svgHeight - svgHeight * 0.3;
-    const stemColor = stem_colors[Math.floor(Math.random() * stem_colors.length)];
+    const stemColor = stem_colors[randInt(stem_colors.length)];
     console.log('Stem color:', stemColor);
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
     line.setAttribute('x1', stemX);
@@ -56,8 +56,8 @@ export function drawFlower(svg, type, colorPalette) {
     svg.appendChild(line);
 
     // Draw petals
-    const petalCount = Math.floor(Math.random() * 13) + 1;
-    const petalColor = petal_colors[Math.floor(Math.random() * petal_colors.length)];
+    const petalCount = randInt(13) + 1;
+    const petalColor = petal_colors[randInt(petal_colors.length)];
     console.log('Petal count:', petalCount, 'Petal color:', petalColor);
     const petalRadius = 50;
     const petalWidth = 20;
