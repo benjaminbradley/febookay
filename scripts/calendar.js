@@ -14,6 +14,13 @@ export function getColorPalette(date) {
         return palette.petal_colors.length >= petalCount &&
                palette.stem_colors.length >= stemCount &&
                palette.bg_colors.length >= bgCount;
+        const isValid = palette.petal_colors.length >= petalCount &&
+                        palette.stem_colors.length >= stemCount &&
+                        palette.bg_colors.length >= bgCount;
+        if (!isValid) {
+            console.warn('Invalid color palette detected:', palette);
+        }
+        return isValid;
     }
 
     const palettes = {
@@ -22,6 +29,9 @@ export function getColorPalette(date) {
             stem_colors: ['#8BC34A'],
             bg_colors: ['#FFCCF9', '#FFFFFF']
         },
+        // ... other palettes ...
+    };
+    // ... rest of the function remains unchanged ...
         'February': {
             petal_colors: ['#A7D676', '#8BC34A'],
             stem_colors: ['#558B2F', '#33691E'],
