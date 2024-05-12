@@ -1,5 +1,5 @@
 // Functions for canvas drawing
-function drawFlower(context, type, colorPalette) {
+export function drawFlower(context, type, colorPalette) {
     const { petal_colors, stem_colors, bg_colors } = colorPalette;
     const canvasWidth = context.canvas.width;
     const canvasHeight = context.canvas.height;
