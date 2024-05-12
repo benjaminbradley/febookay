@@ -7,13 +7,26 @@ function getTodaysFlowerType(date) {
 }
 
 function getColorPalette(date) {
-    const palettes = [
-        ['#FFB5E8', '#FF9CEE', '#FFCCF9'],
-        ['#A7D676', '#8BC34A', '#558B2F'],
-        ['#FFABAB', '#FFC3A0', '#FFDDC1'],
-        ['#FFFFB5', '#FFFF9D', '#F9F871'],
-        ['#FFADAD', '#FFD6A5', '#FDFFB6', '#CAFFBF', '#9BF6FF', '#A0C4FF', '#BDB2FF', '#FFC6FF']
-    ];
+    const palettes = {
+        'January': {
+            petal_colors: ['#FFB5E8', '#FF9CEE'],
+            stem_colors: ['#8BC34A'],
+            bg_colors: ['#FFCCF9', '#FFFFFF']
+        },
+        'February': {
+            petal_colors: ['#A7D676', '#8BC34A'],
+            stem_colors: ['#558B2F', '#33691E'],
+            bg_colors: ['#F0F4C3', '#DCEDC8', '#C5E1A5']
+        },
+        // ... Add entries for other months
+        'December': {
+            petal_colors: ['#FFADAD', '#FFD6A5', '#FDFFB6'],
+            stem_colors: ['#CAFFBF', '#9BF6FF'],
+            bg_colors: ['#A0C4FF', '#BDB2FF', '#FFC6FF', '#FFFFFC']
+        }
+    };
     // Use the month to select a color palette
-    return palettes[date.getMonth()];
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+    return palettes[monthNames[date.getMonth()]];
 }
