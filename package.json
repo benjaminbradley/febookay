@@ -1,0 +1,26 @@
+{
+  "name": "febookay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjaminbradley/febookay.git"
+  },
+  "keywords": [
+    "art",
+    "mother's",
+    "day",
+    "flowers",
+    "generative"
+  ],
+  "author": "Benjamin Bradley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjaminbradley/febookay/issues"
+  },
+  "homepage": "https://github.com/benjaminbradley/febookay#readme"
+}
