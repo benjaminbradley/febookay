@@ -40,6 +40,63 @@ export function drawFlower(svg, type, colorPalette, randInt) {
     svg.appendChild(rectBottom);
 
     // Draw stem
+    // Add background accent decoration to the lower panel
+    const decorationType = randInt(6); // Randomly choose a decoration pattern
+    switch (decorationType) {
+        case 1: // Checkered pattern
+            drawCheckeredPattern(svg, splitPosition, svgWidth, svgHeight - splitPosition, bg_accent_color);
+            break;
+        case 2: // Horizontal stripes
+            drawStripesPattern(svg, splitPosition, svgWidth, svgHeight - splitPosition, bg_accent_color, 'horizontal');
+            break;
+        case 3: // Vertical stripes
+            drawStripesPattern(svg, splitPosition, svgWidth, svgHeight - splitPosition, bg_accent_color, 'vertical');
+            break;
+        case 4: // Large hollow circles
+            drawCirclesPattern(svg, splitPosition, svgWidth, svgHeight - splitPosition, bg_accent_color, 'large', false);
+            break;
+        case 5: // Small solid circles
+            drawCirclesPattern(svg, splitPosition, svgWidth, svgHeight - splitPosition, bg_accent_color, 'small', true);
+            break;
+        // case 0 and default: // Solid color, no additional decoration needed
+    }
+
+    // ... existing code for drawing stem ...
+
+}
+
+// Define the pattern drawing functions below
+function drawCheckeredPattern(svg, startY, width, height, color) {
+    // Implementation of checkered pattern
+}
+
+function drawStripesPattern(svg, startY, width, height, color, orientation) {
+    // Implementation of stripes pattern
+}
+
+function drawCirclesPattern(svg, startY, width, height, color, size, fill) {
+    // Implementation of circles pattern
+}
+
+// ... existing code for drawFlower function ...
+
+// Example implementation for drawCheckeredPattern (other pattern functions will have similar structure)
+function drawCheckeredPattern(svg, startY, width, height, color) {
+    const squareSize = 20; // Example size, adjust as needed
+    for (let y = startY; y < startY + height; y += squareSize) {
+        for (let x = 0; x < width; x += squareSize) {
+            if (((x + y) / squareSize) % 2 === 0) {
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute('x', x);
+                rect.setAttribute('y', y);
+                rect.setAttribute('width', squareSize);
+                rect.setAttribute('height', squareSize);
+                rect.setAttribute('fill', color);
+                svg.appendChild(rect);
+            }
+        }
+    }
+}
     // ... rest of the function remains unchanged ...
     const stemX = svgWidth / 2;
     const stemTopY = svgHeight * 0.25;
