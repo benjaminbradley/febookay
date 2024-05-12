@@ -56,8 +56,9 @@ export function drawFlower(svg, type, colorPalette, randInt) {
     svg.appendChild(line);
 
     // Draw petals
+    let petalColor;
     const petalCount = randInt(13) + 1;
-    const petalColor = petal_colors[randInt(petal_colors.length)];
+    petalColor = petal_colors[randInt(petal_colors.length)];
     console.log('Petal count:', petalCount, 'Petal color:', petalColor);
     const petalRadius = 50;
     const petalWidth = 20;
@@ -78,4 +79,16 @@ export function drawFlower(svg, type, colorPalette, randInt) {
         svg.appendChild(ellipse);
         console.log('Drawing petal at angle:', angle, 'Position:', petalX, petalY);
     }
+
+    // Draw the greeting text at the bottom of the canvas
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute('x', '50%');
+    text.setAttribute('y', svgHeight - 10);
+    text.setAttribute('fill', petalColor);
+    text.setAttribute('font-family', 'sans-serif');
+    text.setAttribute('font-size', '24px');
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('alignment-baseline', 'ideographic');
+    text.textContent = 'Happy Mother\'s Day, Effie! Love, Benji May 12, 2024';
+    svg.appendChild(text);
 }
