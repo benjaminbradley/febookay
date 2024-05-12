@@ -23,37 +23,37 @@ export function getColorPalette(randInt) {
             petal_colors: ['#FFB5E8', '#FF9CEE'],
             stem_colors: ['#8BC34A'],
             bg_colors: ['#FFCCF9', '#FFFFFF'],
-            accent_color: '#FFACEE'
+            bg_accent_color: '#FFACEE'
         },
         { // 1
             petal_colors: ['#A7D676', '#8BC34A'],
             stem_colors: ['#558B2F', '#33691E'],
             bg_colors: ['#F0F4C3', '#DCEDC8', '#C5E1A5'],
-            accent_color: '#B2FF66'
+            bg_accent_color: '#B2FF66'
         },
         { // 2
             petal_colors: ['#FFADAD', '#FFC6FF'],
             stem_colors: ['#FFD6A5', '#FDFFB6'],
             bg_colors: ['#CAFFBF', '#9BF6FF'],
-            accent_color: '#A0FFEC'
+            bg_accent_color: '#A0FFEC'
         },
         { // 10
             petal_colors: ['#FFADAD', '#FFD6A5', '#FDFFB6'],
             stem_colors: ['#CAFFBF', '#9BF6FF'],
             bg_colors: ['#A0C4FF', '#BDB2FF', '#FFC6FF', '#FFFFFC'],
-            accent_color: '#FFDEFA'
+            bg_accent_color: '#FFDEFA'
         },
         {
             petal_colors: ['#A7D676', '#8BC34A'],
             stem_colors: ['#558B2F', '#33691E'],
             bg_colors: ['#F0F4C3', '#DCEDC8', '#C5E1A5'],
-            accent_color: '#B2FF66'
+            bg_accent_color: '#B2FF66'
         },
         {
             petal_colors: ['#FFADAD', '#FFD6A5', '#FDFFB6'],
             stem_colors: ['#CAFFBF', '#9BF6FF'],
             bg_colors: ['#A0C4FF', '#BDB2FF', '#FFC6FF', '#FFFFFC'],
-            accent_color: '#FFDEFA'
+            bg_accent_color: '#FFDEFA'
         }
     ];
     let selectedPalette;

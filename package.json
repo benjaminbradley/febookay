@@ -23,9 +23,5 @@
   "bugs": {
     "url": "https://github.com/benjaminbradley/febookay/issues"
   },
-  "homepage": "https://github.com/benjaminbradley/febookay#readme",
-  "devDependencies": {
-    "http-server": "^0.12.3"
-  }
   "homepage": "https://github.com/benjaminbradley/febookay#readme"
 }

@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedDateInput = document.getElementById('selected-date');
     selectedDateInput.value = initialDate;
 
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute('id', 'svg_canvas');
+    var canvas_w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    var canvas_h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    console.log("Canvas size: "+canvas_w+'x'+canvas_h);
+    svg.setAttribute('width', canvas_w);
+    svg.setAttribute('height', canvas_h);
+    svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+    document.body.appendChild(svg);
+
     function updatePageForSelectedDate() {
         const selectedDate = new Date(selectedDateInput.value);
         rand = new Random(selectedDate.getTime());
@@ -55,26 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updatePageForSelectedDate(); // Initial update on page load
 
-    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute('id', 'svg_canvas');
-    var canvas_w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var canvas_h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    console.log("Canvas size: "+canvas_w+'x'+canvas_h);
-    svg.setAttribute('width', canvas_w);
-    svg.setAttribute('height', canvas_h);
-    svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-    document.body.appendChild(svg);
-
 
     // Get today's date
     const today = new Date();
-    rand = new Random(today.getTime());
-    // Get flower type and color palette for today
+    const todayFormatted = today.toISOString().split('T')[0]; // Keep only the year/month/day portion
+    rand = new Random(new Date(todayFormatted).getTime());
     const flowerType = getTodaysFlowerType(randInt);
     const colorPalette = getColorPalette(randInt);
 
     // Draw a basic flower using the color palette
     drawFlower(svg, flowerType, colorPalette, randInt);
-
-    // TODO: Implement the drawing logic
 });
