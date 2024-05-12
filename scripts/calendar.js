@@ -1,12 +1,12 @@
 // Utility functions for date-based logic
-function getTodaysFlowerType(date) {
+export function getTodaysFlowerType(date) {
     const flowerTypes = ['rose', 'tulip', 'daisy', 'sunflower', 'lily'];
     // Use the day of the year to select a flower type
     const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
     return flowerTypes[dayOfYear % flowerTypes.length];
 }
 
-function getColorPalette(date) {
+export function getColorPalette(date) {
     const palettes = {
         'January': {
             petal_colors: ['#FFB5E8', '#FF9CEE'],
@@ -27,5 +27,5 @@ function getColorPalette(date) {
     };
     // Use the month to select a color palette
     const monthNames = ["January", "February", "December"];
-    return palettes[monthNames[date.getMonth()]];
+    return palettes[monthNames[Math.floor(Math.random() * monthNames.length)]];
 }
