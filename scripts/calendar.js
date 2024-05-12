@@ -26,7 +26,6 @@ function getColorPalette(date) {
         }
     };
     // Use the month to select a color palette
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"];
+    const monthNames = ["January", "February", "December"];
     return palettes[monthNames[date.getMonth()]];
 }
