@@ -43,7 +43,7 @@ export function drawFlower(svg, type, colorPalette, randInt) {
     // ... rest of the function remains unchanged ...
     const stemX = svgWidth / 2;
     const stemTopY = svgHeight * 0.25;
-    const stemBottomY = svgHeight - svgHeight * 0.3;
+    const stemBottomY = svgHeight - svgHeight * 0.2;
     const stemColor = stem_colors[randInt(stem_colors.length)];
     console.log('Stem color:', stemColor);
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
