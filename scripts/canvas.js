@@ -49,4 +49,26 @@ export function drawFlower(context, type, colorPalette) {
         context.restore();
         console.log('Drawing petal at angle:', angle, 'Position:', petalX, petalY);
     }
+
+    // Draw petals
+    const petalCount = Math.floor(Math.random() * 13) + 1;
+    const petalColor = petal_colors[Math.floor(Math.random() * petal_colors.length)];
+    console.log('Petal count:', petalCount, 'Petal color:', petalColor);
+    const petalRadius = 50;
+    const petalWidth = 20;
+    const petalHeight = 80;
+    for (let i = 0; i < petalCount; i++) {
+        const angle = (Math.PI * 2 / petalCount) * i;
+        const petalX = stemX + petalRadius * Math.cos(angle);
+        const petalY = stemTopY - petalRadius * Math.sin(angle);
+        context.save();
+        context.translate(petalX, petalY);
+        context.rotate(angle);
+        context.beginPath();
+        context.ellipse(0, 0, petalWidth, petalHeight, 0, 0, 2 * Math.PI);
+        context.fillStyle = petalColor;
+        context.fill();
+        context.restore();
+        console.log('Drawing petal at angle:', angle, 'Position:', petalX, petalY);
+    }
 }
