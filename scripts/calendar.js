@@ -11,9 +11,6 @@ export function getColorPalette(date) {
         const petalCount = 2;
         const stemCount = 1;
         const bgCount = 2;
-        return palette.petal_colors.length >= petalCount &&
-               palette.stem_colors.length >= stemCount &&
-               palette.bg_colors.length >= bgCount;
         const isValid = palette.petal_colors.length >= petalCount &&
                         palette.stem_colors.length >= stemCount &&
                         palette.bg_colors.length >= bgCount;
@@ -23,13 +20,29 @@ export function getColorPalette(date) {
         return isValid;
     }
 
-    const palettes = {
-        'January': {
+    const palettes = [
+        { // 0
             petal_colors: ['#FFB5E8', '#FF9CEE'],
             stem_colors: ['#8BC34A'],
             bg_colors: ['#FFCCF9', '#FFFFFF']
         },
-        'February': {
+        { // 1
+            petal_colors: ['#A7D676', '#8BC34A'],
+            stem_colors: ['#558B2F', '#33691E'],
+            bg_colors: ['#F0F4C3', '#DCEDC8', '#C5E1A5']
+        },
+        { // 2
+            petal_colors: ['#FFADAD', '#FFC6FF'],
+            stem_colors: ['#FFD6A5', '#FDFFB6'],
+            bg_colors: ['#CAFFBF', '#9BF6FF']
+        },
+        // ... Add entries for other palettes
+        { // 10
+            petal_colors: ['#FFADAD', '#FFD6A5', '#FDFFB6'],
+            stem_colors: ['#CAFFBF', '#9BF6FF'],
+            bg_colors: ['#A0C4FF', '#BDB2FF', '#FFC6FF', '#FFFFFC']
+        }
+    ];
             petal_colors: ['#A7D676', '#8BC34A'],
             stem_colors: ['#558B2F', '#33691E'],
             bg_colors: ['#F0F4C3', '#DCEDC8', '#C5E1A5']
@@ -42,11 +55,12 @@ export function getColorPalette(date) {
         }
     };
     // Use the month to select a color palette
-    const monthNames = ["January", "February", "December"];
+    const paletteIndex = date.getMonth();
     let selectedPalette;
     do {
-        selectedPalette = palettes[monthNames[Math.floor(Math.random() * monthNames.length)]];
+        selectedPalette = palettes[paletteIndex];
     } while (!validatePalette(selectedPalette));
+
 
     return selectedPalette;
 }
