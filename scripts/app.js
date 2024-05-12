@@ -20,6 +20,41 @@ function randInt(max) {
 
 // Main application logic for generating the bouquet
 document.addEventListener('DOMContentLoaded', function() {
+    const queryParams = new URLSearchParams(window.location.search);
+    const urlDate = queryParams.get('date');
+    const initialDate = urlDate || new Date().toISOString().split('T')[0];
+    const selectedDateInput = document.getElementById('selected-date');
+    selectedDateInput.value = initialDate;
+
+    function updatePageForSelectedDate() {
+        const selectedDate = new Date(selectedDateInput.value);
+        rand = new Random(selectedDate.getTime());
+        const flowerType = getTodaysFlowerType(randInt);
+        const colorPalette = getColorPalette(randInt);
+        drawFlower(svg, flowerType, colorPalette, randInt);
+    }
+
+    selectedDateInput.addEventListener('change', () => {
+        window.history.pushState({}, '', `?date=${selectedDateInput.value}`);
+        updatePageForSelectedDate();
+    });
+
+    document.getElementById('prev-day').addEventListener('click', () => {
+        const date = new Date(selectedDateInput.value);
+        date.setDate(date.getDate() - 1);
+        selectedDateInput.value = date.toISOString().split('T')[0];
+        selectedDateInput.dispatchEvent(new Event('change'));
+    });
+
+    document.getElementById('next-day').addEventListener('click', () => {
+        const date = new Date(selectedDateInput.value);
+        date.setDate(date.getDate() + 1);
+        selectedDateInput.value = date.toISOString().split('T')[0];
+        selectedDateInput.dispatchEvent(new Event('change'));
+    });
+
+    updatePageForSelectedDate(); // Initial update on page load
+
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute('id', 'svg_canvas');
     var canvas_w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
