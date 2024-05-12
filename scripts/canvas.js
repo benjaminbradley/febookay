@@ -1,4 +1,4 @@
-// Functions for canvas drawing
+// Export the drawFlower function for canvas drawing
 export function drawFlower(context, type, colorPalette) {
     const { petal_colors, stem_colors, bg_colors } = colorPalette;
     const canvasWidth = context.canvas.width;
