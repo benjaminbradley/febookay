@@ -48,7 +48,7 @@ export function drawFlower(svg, type, colorPalette, randInt) {
     // Draw stem
     // Add background accent decoration to the lower panel
     const decorationType = randInt(6); // Randomly choose a decoration pattern
-    switch (1) {
+    switch (randInt(6)) {
         case 1: // Checkered pattern
             drawCheckeredPattern(svg, splitPosition, svgWidth, svgHeight - splitPosition, bg_accent_color);
             break;
