@@ -7,6 +7,15 @@ export function getTodaysFlowerType(date) {
 }
 
 export function getColorPalette(date) {
+    function validatePalette(palette) {
+        const petalCount = 2;
+        const stemCount = 1;
+        const bgCount = 2;
+        return palette.petal_colors.length >= petalCount &&
+               palette.stem_colors.length >= stemCount &&
+               palette.bg_colors.length >= bgCount;
+    }
+
     const palettes = {
         'January': {
             petal_colors: ['#FFB5E8', '#FF9CEE'],
@@ -27,5 +36,10 @@ export function getColorPalette(date) {
     };
     // Use the month to select a color palette
     const monthNames = ["January", "February", "December"];
-    return palettes[monthNames[Math.floor(Math.random() * monthNames.length)]];
+    let selectedPalette;
+    do {
+        selectedPalette = palettes[monthNames[Math.floor(Math.random() * monthNames.length)]];
+    } while (!validatePalette(selectedPalette));
+
+    return selectedPalette;
 }
