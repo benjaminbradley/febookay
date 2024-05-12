@@ -4,6 +4,14 @@ export function drawFlower(svg, type, colorPalette) {
     const svgWidth = svg.getAttribute('width');
     const svgHeight = svg.getAttribute('height');
 
+    // ... existing code for drawing background ...
+
+    // Draw stem
+    // ... existing code for drawing stem ...
+
+    // Choose a stem color for the petal outline
+    const petalOutlineColor = stem_colors[Math.floor(Math.random() * stem_colors.length)];
+
     console.log('Drawing flower with type:', type);
     console.log('SVG size:', svgWidth, 'x', svgHeight);
 
@@ -64,6 +72,8 @@ export function drawFlower(svg, type, colorPalette) {
         ellipse.setAttribute('rx', petalWidth);
         ellipse.setAttribute('ry', petalHeight);
         ellipse.setAttribute('fill', petalColor);
+        ellipse.setAttribute('stroke', petalOutlineColor);
+        ellipse.setAttribute('stroke-width', '2'); // Adjust stroke width as needed
         ellipse.setAttribute('transform', `rotate(${angle * 180 / Math.PI} ${petalX} ${petalY})`);
         svg.appendChild(ellipse);
         console.log('Drawing petal at angle:', angle, 'Position:', petalX, petalY);
