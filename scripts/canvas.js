@@ -9,8 +9,11 @@ export function drawFlower(svg, type, colorPalette) {
 
     // Draw background
     const splitPosition = svgHeight * (0.4 + Math.random() * 0.2);
-    const bgTopColor = bg_colors[Math.floor(Math.random() * bg_colors.length)];
-    const bgBottomColor = bg_colors[Math.floor(Math.random() * bg_colors.length)];
+    let bgTopColor = bg_colors[Math.floor(Math.random() * bg_colors.length)];
+    let bgBottomColor;
+    do {
+        bgBottomColor = bg_colors[Math.floor(Math.random() * bg_colors.length)];
+    } while (bgBottomColor === bgTopColor);
     console.log('Background top color:', bgTopColor);
     console.log('Background bottom color:', bgBottomColor);
     const rectTop = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -29,6 +32,7 @@ export function drawFlower(svg, type, colorPalette) {
     svg.appendChild(rectBottom);
 
     // Draw stem
+    // ... rest of the function remains unchanged ...
     const stemX = svgWidth / 2;
     const stemTopY = svgHeight * 0.25;
     const stemBottomY = svgHeight - svgHeight * 0.3;
